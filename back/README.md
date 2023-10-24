@@ -88,3 +88,52 @@ Un sistema de gestión de tutoriales con detalles específicos, construido con F
 
 Cada `Tutorial` tiene una relación uno a uno con `TutorialDetail`.
 
+## Funcionamiento imagenes
+
+![swagger](https://retos.redflox.com/oati-prueba/endpoints.png)
+![swagger](https://retos.redflox.com/oati-prueba/todos_los_tutoriales_con_detalle.png)
+![swagger](https://retos.redflox.com/oati-prueba/todos_los_tutoriales_con_detalle_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_tutorial_with_details.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_tutorial_with_details_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/update_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/update_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/delete_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/delete_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/list_tutorials.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/list_tutorials_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_all_details.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_all_details_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_detail_for_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/read_detail_for_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_detail_for_tutorial.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/create_detail_for_tutorial_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/update_detail_by_id.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/update_detail_by_id_response.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/delete_detail_by_id.png)
+
+![swagger](https://retos.redflox.com/oati-prueba/delete_detail_by_id_response.png)
