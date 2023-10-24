@@ -1,22 +1,23 @@
-# Importaciones nativas y de librerias
+# Native and third-party imports
 from fastapi import APIRouter, HTTPException
 from typing import List
 
-# Esquemas y servicios
+# Schemas and services
 from schemas.tutorial_detail_schema import TutorialDetail, TutorialDetailCreate
 from services.tutorial_detail_service import TutorialDetailService
 from services.exception import ResourceNotFound
 
-# Instancia de objeto de APIRouter para generar los endpoints
+# APIRouter instance for endpoint generation
 tutorial_detail_router = APIRouter()
 
-# Instancia del servicio que controla la logica de negocio de detalles de tutoriales
+# Service instance for tutorial detail business logic
 tutorial_detail_service = TutorialDetailService()
 
-
-# Este endpoint retorna todos los detalles existentes
 @tutorial_detail_router.get("/all", response_model=List[TutorialDetail])
 def read_all_details():
+    """
+    Retrieves all existing details.
+    """
     try:
         details = tutorial_detail_service.get_all_details()
         return details
@@ -25,56 +26,64 @@ def read_all_details():
     except ResourceNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=404, detail=(f"Error reading details {str(e)}"))
-    
-# Este endpoint retorna un detalle a partir del id
+        raise HTTPException(status_code=500, detail=f"Error reading details: {str(e)}")
+
 @tutorial_detail_router.get("/{tutorial_id}/detail", response_model=TutorialDetail)
 def read_detail_for_tutorial(tutorial_id: int):
+    """
+    Retrieves a detail by its ID.
+    """
     try:
         detail = tutorial_detail_service.get_detail_for_tutorial(tutorial_id)
+        return detail
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except ResourceNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=404, detail=(f"Error reading detail for tutorial {str(e)}"))
-    return detail
+        raise HTTPException(status_code=500, detail=f"Error reading detail for tutorial: {str(e)}")
 
-# Este endpoint guarda un detalle y lo asocia a un tutorial si es posible
 @tutorial_detail_router.post("/{tutorial_id}/detail", response_model=TutorialDetail, status_code=201)
 def create_detail_for_tutorial(tutorial_id: int, details: TutorialDetailCreate):
+    """
+    Stores a detail and associates it to a tutorial if possible.
+    """
     try:
         detail_created = tutorial_detail_service.create_tutorial_detail(tutorial_id, details.dict())
+        return detail_created
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except ResourceNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=404, detail=(f"Error creating detail for tutorial {str(e)}"))
-    return detail_created
+        raise HTTPException(status_code=500, detail=f"Error creating detail for tutorial: {str(e)}")
 
-# Este endpoint edita  el detalle a partir de su id
 @tutorial_detail_router.patch("/{tutorial_detail_id}", response_model=TutorialDetail)
 def update_detail_by_id(tutorial_detail_id: int, tutorial_detail_data: dict):
+    """
+    Updates the detail by its ID.
+    """
     try:
         detail = tutorial_detail_service.update_detail_by_id(tutorial_detail_id, tutorial_detail_data)
+        return detail
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except ResourceNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=404, detail=(f"Error updating detail {str(e)}"))
-    return detail
+        raise HTTPException(status_code=500, detail=f"Error updating detail: {str(e)}")
 
-# Este endpoint elimina el detalle, no se elimina el tutorial.
 @tutorial_detail_router.delete("/{tutorial_detail_id}", response_model=TutorialDetail)
 def delete_detail_by_id(tutorial_detail_id: int):
+    """
+    Deletes the detail by its ID. The tutorial is not deleted.
+    """
     try:
-        detail = tutorial_detail_service.delelte_detail_by_id(tutorial_detail_id)
+        detail = tutorial_detail_service.delete_detail_by_id(tutorial_detail_id)
+        return detail
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except ResourceNotFound as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=404, detail=(f"Error deleting detail {str(e)}"))
-    return detail
+        raise HTTPException(status_code=500, detail=f"Error deleting detail: {str(e)}")

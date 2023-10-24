@@ -1,23 +1,28 @@
 from pydantic import BaseModel
 from datetime import date
 
-# Esquemas de pydantic, funcionan para  validar datos y deserializar datos.
+# Pydantic schemas used for data validation and deserialization.
 
-
-# Esquema de tutoriales para construir esquema mas generico.
 class TutorialResponse(BaseModel):
+    """
+    Data schema representing a tutorial for a more generic response.
+    """
     id: int
     title: str
     description: str
     state: bool
 
-# Esquema de detalles para construir esquema mas generico.
 class TutorialDetailResponse(BaseModel):
+    """
+    Data schema representing tutorial details for a more generic response.
+    """
     id: int
     creation_date: date
     creator_user: str
 
-# Esquema para responder todos los tutoriales con detalles
 class ResponseTutorialWithDetails(BaseModel):
+    """
+    Data schema used to respond with full details of a tutorial including its associated details.
+    """
     tutorial: TutorialResponse
     details: TutorialDetailResponse

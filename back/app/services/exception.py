@@ -1,5 +1,13 @@
-
-# Exepcion cuando no se encuentra un recurso en la db
+# Exception raised when a resource is not found in the database.
 class ResourceNotFound(Exception):
-    def __init__(self, message):
+    """
+    Exception thrown when a specific resource is not found in the database.
+    """
+    def __init__(self, message: str):
+        """
+        Initializes the exception with a provided message.
+        
+        Args:
+        - message (str): Description of the error or the missing resource.
+        """
         super().__init__(message)

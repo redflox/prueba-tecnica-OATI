@@ -1,19 +1,26 @@
 from pydantic import BaseModel
 
-
-# Esquema base para  un tutorial
+# Base schema for a tutorial.
 class TutorialBase(BaseModel):
+    """
+    Base schema representing the essential attributes of a tutorial.
+    """
     title: str
     description: str
     state: bool
 
-
-# Esquema para validar datos de  llegada al api respecto a un tutorial
+# Schema used for API data validation when creating a new tutorial.
 class TutorialCreate(TutorialBase):
+    """
+    Schema for validating incoming data for creating a tutorial.
+    """
     pass
 
-# Esquema para trabajar de la mano con sqlalchemy y datos provenientes de la db
+# Schema interfacing with SQLAlchemy to handle database data for tutorials.
 class Tutorial(TutorialBase):
+    """
+    Schema that includes the ID attribute for handling data from the database regarding tutorials.
+    """
     id: int
 
     class Config:

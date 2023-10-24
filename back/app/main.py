@@ -1,21 +1,23 @@
-# Importaciones de fast api
+# FastAPI imports
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Importacion para crear  tablas de la db
+# Import for database table creation
 from database.create_database import create_tables
 
-# Importando routers que componen el API REST
+# Import routers for the REST API
 from routers.tutorial_router import tutorialRouter
 from routers.tutorial_detail_router import tutorial_detail_router
 
-# Funcion que crea las tablas en la base de datos
+# Create the database tables (if they don't exist)
 create_tables()
 
-# Intancia de fastapi
+# Initialize FastAPI instance
 app = FastAPI()
 
-# Configurando cors
+# Configure CORS
+# WARNING: Allowing all origins for CORS can be insecure. 
+# Limit to known origins in a production environment.
 origins = ["*"]
 
 app.add_middleware(
@@ -26,6 +28,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Agregando routers al api
+# Add routers to the API
 app.include_router(tutorialRouter, prefix="/api/tutorial")
 app.include_router(tutorial_detail_router, prefix="/api/tutorialdetail")
