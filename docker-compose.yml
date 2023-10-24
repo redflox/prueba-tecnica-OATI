@@ -10,7 +10,16 @@ services:
       - proxy
     environment:
       - DATABASE_URL=
-
+  oatifront:
+    build: ./front
+    expose:
+      - 5000
+    volumes:
+      - ./front:/usr/src/app
+    ports:
+      - 80:3000
+    networks:
+      -proxy
 networks:
   proxy:
     external: true
