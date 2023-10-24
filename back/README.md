@@ -2,6 +2,10 @@
 
 Un sistema de gestión de tutoriales con detalles específicos, construido con FastAPI y MySQL.
 
+### DATOS PERSONALES
+- NOMBRE: Bryan Felipe Muñoz Molina
+- CORREO: swsbmm@gmail.com
+
 ## Despliegue con Docker
 
 Para garantizar un despliegue consistente y libre de problemas en cualquier entorno, esta aplicación ha sido contenerizada utilizando Docker. Esto facilita su despliegue, escalabilidad y gestión.
