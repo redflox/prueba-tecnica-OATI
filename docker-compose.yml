@@ -8,6 +8,8 @@ services:
       - ./back/app:/app
     networks:
       - proxy
+    environment:
+      - DATABASE_URL=
 
 networks:
   proxy:

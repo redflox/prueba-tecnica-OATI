@@ -2,11 +2,25 @@
 
 Un sistema de gestión de tutoriales con detalles específicos, construido con FastAPI y MySQL.
 
+## Despliegue con Docker
+
+Para garantizar un despliegue consistente y libre de problemas en cualquier entorno, esta aplicación ha sido contenerizada utilizando Docker. Esto facilita su despliegue, escalabilidad y gestión.
+
+### URL de la Aplicación
+
+La aplicación está desplegada y puede ser accedida en la siguiente dirección:
+
+[https://oati-back.redflox.com/docs](https://oati-back.redflox.com/docs)
+
+Desde esta URL, podrás acceder a la documentación generada por FastAPI y probar los endpoints de la aplicación directamente desde el navegador.
+
+
 ## Stack Tecnológico
 
 - **Backend**: FastAPI
 - **Base de datos**: MySQL
 - **ORM**: SQLAlchemy
+
 
 ## Instrucciones de Instalación
 
@@ -26,6 +40,20 @@ Un sistema de gestión de tutoriales con detalles específicos, construido con F
 4. **Configurar base de datos**
 
     Tener MySQL instalado y en funcionamiento. Crear una base de datos para el proyecto.
+    ```bash
+    #Comandos usados para crear la base de datos y usuario.
+    CREATE DATABASE virtualOATI;
+    CREATE USER 'your_username'@'%' IDENTIFIED BY 'your_password';
+    GRANT ALL PRIVILEGES ON virtualOATI.* TO 'your_username'@'%';
+    FLUSH PRIVILEGES;
+
+    #Comandos para eliminar un usuario
+    SELECT user FROM mysql.user WHERE user = 'your_username';
+    DROP USER 'your_username'@'%';
+
+    #Comando para saber el usuario actual
+    SELECT CURRENT_USER();
+
 
 5. **Configurar variables de entorno**
 
