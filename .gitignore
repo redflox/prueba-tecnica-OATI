@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,python,angular
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,python,angular
 
+nginx/
+
 ### Angular ###
 ## Angular ##
 # compiled output

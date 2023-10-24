@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  oatiback:
+    build: ./back/app
+    container_name: oatiback
+    volumes:
+      - ./back/app:/app
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
